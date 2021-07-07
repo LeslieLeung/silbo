@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.chat.ChatActivity"
+    android:theme="@style/Theme.Silbo"
+    android:orientation="vertical"
+    android:background="@color/main_background">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/alpha"
+            android:src="@drawable/chevron_big_left"
+            />
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chatRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/chat_view"
+        android:paddingEnd="12dp"
+        android:paddingStart="12dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btnGenKey"
+                android:layout_marginEnd="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="生成密钥"
+                android:layout_weight="1" />
+            <Button
+                android:id="@+id/btnEncrypt"
+                android:layout_marginEnd="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="密钥交换"
+                android:layout_weight="1" />
+            <Button
+                android:id="@+id/btnShow"
+                android:layout_marginEnd="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="显示详情"
+                android:layout_weight="1" />
+            <Button
+                android:id="@+id/btnShowKey"
+                android:layout_marginEnd="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="显示密钥"
+                android:layout_weight="1" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/inputText"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_weight="1"
+                android:paddingStart="12sp"
+                android:background="@drawable/chat_edittext"
+                android:hint="Type something"
+                android:maxLines="2" />
+
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:id="@+id/send"
+                android:text="Send"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/tab_chatlist"
+        android:icon="@drawable/chat_off"
+        android:title="聊天" />
+    <item
+        android:id="@+id/tab_contact"
+        android:icon="@drawable/contact_off"
+        android:title="联系人" />
+    <item
+        android:id="@+id/tab_profile"
+        android:icon="@drawable/profile_off"
+        android:title="我的" />
+</menu>

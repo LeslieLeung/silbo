@@ -1,0 +1,6 @@
+ext {
+    dependencies = [
+            fastjson: "com.alibaba:fastjson:1.2.49",
+            protobuf: "com.google.protobuf:protobuf-java:3.5.0",
+    ]
+}

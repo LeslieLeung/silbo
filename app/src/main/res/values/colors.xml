@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#9C5FE8</color>
+    <color name="purple_500">#691FD3</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+
+<!--Login-->
+    <color name="login_background">#67437C</color>
+    <color name="login_pricolor">#D4CAEB</color>
+    <color name="login_textcolor">#4F2A65</color>
+
+<!--main-->
+    <color name="main_background">#FAF9FF</color>
+    <color name="text_color">#333333</color>
+</resources>
