@@ -13,6 +13,7 @@ import androidx.appcompat.app.ActionBar
 import androidx.core.view.isGone
 import com.ameow.silbo.R
 import com.ameow.silbo.logic.model.Request
+import com.ameow.silbo.logic.model.Response
 import com.ameow.silbo.logic.network.SilboNetwork
 import com.ameow.silbo.logic.network.UserService
 import com.ameow.silbo.service.MsgService
@@ -20,6 +21,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import java.lang.RuntimeException
 
 class LoginActivity : AppCompatActivity() {
     private var switchStatus = 0 // 0为登录状态，1为注册状态
@@ -56,23 +58,30 @@ class LoginActivity : AppCompatActivity() {
                     data.put("name", usernameEditText.text.toString())
                     data.put("password", passwordEditText.text.toString())
                     val request = Request(data)
-                    val resp = SilboNetwork.login(request)
-                    if (resp.code == "0") {
-                        Toast.makeText(applicationContext, "登录成功", Toast.LENGTH_SHORT).show()
-                        val editor = getSharedPreferences("runtime", Context.MODE_PRIVATE).edit()
-                        editor.putString("username", usernameEditText.text.toString())
-                        editor.putString("user_id", resp.data.get("user_id"))
-                        editor.putString("isLoggedIn", "1")
-                        editor.apply()
+                    val resp: Response
+                    try {
+                        resp = SilboNetwork.login(request)
+                        if (resp.code == "0") {
+                            Toast.makeText(applicationContext, "登录成功", Toast.LENGTH_SHORT).show()
+                            val editor =
+                                getSharedPreferences("runtime", Context.MODE_PRIVATE).edit()
+                            editor.putString("username", usernameEditText.text.toString())
+                            editor.putString("user_id", resp.data.get("user_id"))
+                            editor.putString("isLoggedIn", "1")
+                            editor.apply()
 
-                        // 启动MsgService
-                        Log.d("MsgService", "starting msgService")
-                        val msgServiceIntent = Intent(applicationContext, MsgService::class.java)
-                        startService(msgServiceIntent)
+                            // 启动MsgService
+                            Log.d("MsgService", "starting msgService")
+                            val msgServiceIntent =
+                                Intent(applicationContext, MsgService::class.java)
+                            startService(msgServiceIntent)
 
-                        finish()
-                    } else {
-                        Toast.makeText(applicationContext, resp.msg, Toast.LENGTH_SHORT).show()
+                            finish()
+                        } else {
+                            Toast.makeText(applicationContext, resp.msg, Toast.LENGTH_SHORT).show()
+                        }
+                    } catch (e: RuntimeException) {
+                        Toast.makeText(applicationContext, "网络暂时不可用，请重试", Toast.LENGTH_SHORT).show()
                     }
                 }
             } else {
